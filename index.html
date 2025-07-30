@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Variation Generator - Life Facts</title>
+    <link rel="icon" href="https://i.postimg.cc/Bb9MNPm2/Photoroom-20250723-213109.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #06b2a6;
+            --secondary: #0e00a7;
+            --accent: #ff9d42;
+            --light-bg: #f0f8ff;
+            --dark-bg: #0d1b2a;
+            --card-light: #ffffff;
+            --card-dark: #1b263b;
+            --text-light: #333;
+            --text-dark: #e0e1dd;
+            --border-light: #d1d1d1;
+            --border-dark: #415a77;
+            --success: #4caf50;
+            --warning: #ff9800;
+            --error: #f44336;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s, transform 0.2s;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--light-bg) 0%, #e3f2fd 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body.dark-mode {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1b263b 100%);
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .motivational-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            color: white;
+            box-shadow: 0 10px 30px rgba(14, 0, 167, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .motivational-section::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+
+        .quote-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            font-size: 1.4rem;
+            font-style: italic;
+            padding: 20px;
+        }
+
+        .quote-author {
+            display: block;
+            margin-top: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .generator-card {
+            background-color: var(--card-light);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.dark-mode .generator-card {
+            background-color: var(--card-dark);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            color: var(--secondary);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--secondary);
+        }
+
+        input, select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+            font-size: 16px;
+            background-color: var(--card-light);
+            color: var(--text-light);
+            transition: all 0.3s;
+        }
+
+        body.dark-mode input, 
+        body.dark-mode select {
+            border-color: var(--border-dark);
+            background-color: var(--card-dark);
+            color: var(--text-dark);
+        }
+
+        input:focus, select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(6, 178, 166, 0.2);
+        }
+
+        .button-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 15px 20px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode button {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .generate-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            grid-column: span 2;
+        }
+
+        @media (max-width: 600px) {
+            .generate-btn {
+                grid-column: span 1;
+            }
+        }
+
+        .copy-all-btn, .download-btn {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .theme-toggle {
+            background: linear-gradient(135deg, #4a00e0, #8e2de2);
+            color: white;
+        }
+
+        .feature-btn {
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            color: white;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+
+        .spinner {
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 5px solid var(--primary);
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 25px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 1.2rem;
+            color: var(--secondary);
+        }
+
+        .results-container {
+            display: none;
+            margin-top: 30px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .results-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            color: var(--secondary);
+        }
+
+        .results-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            max-height: 500px;
+            overflow-y: auto;
+            padding: 10px;
+            border: 1px solid var(--border-light);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        body.dark-mode .results-grid {
+            border: 1px solid var(--border-dark);
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .result-item {
+            background: linear-gradient(135deg, rgba(6, 178, 166, 0.1), rgba(14, 0, 167, 0.1));
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: all 0.3s;
+            border: 1px solid rgba(6, 178, 166, 0.2);
+        }
+
+        body.dark-mode .result-item {
+            background: linear-gradient(135deg, rgba(6, 178, 166, 0.2), rgba(14, 0, 167, 0.2));
+            border: 1px solid rgba(14, 0, 167, 0.3);
+        }
+
+        .result-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .result-item:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .result-number {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .result-text {
+            word-break: break-all;
+            font-family: 'Courier New', monospace;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 12px;
+            border-radius: 8px;
+            flex: 1;
+        }
+
+        body.dark-mode .result-text {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .result-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .copy-btn, .favorite-btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .copy-btn {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .favorite-btn {
+            background-color: #ffc107;
+            color: #333;
+        }
+
+        .favorite-btn.favorited {
+            background-color: #ff416c;
+            color: white;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .widget {
+            background-color: var(--card-light);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .widget {
+            background-color: var(--card-dark);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .widget-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .widget-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .widget-title {
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .fact-content {
+            background: linear-gradient(135deg, rgba(6, 178, 166, 0.1), rgba(14, 0, 167, 0.1));
+            padding: 20px;
+            border-radius: 15px;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        body.dark-mode .fact-content {
+            background: linear-gradient(135deg, rgba(6, 178, 166, 0.2), rgba(14, 0, 167, 0.2));
+        }
+
+        .tip-content {
+            background: linear-gradient(135deg, rgba(255, 157, 66, 0.1), rgba(255, 65, 108, 0.1));
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        body.dark-mode .tip-content {
+            background: linear-gradient(135deg, rgba(255, 157, 66, 0.2), rgba(255, 65, 108, 0.2));
+        }
+
+        .favorites-section {
+            margin-top: 25px;
+        }
+
+        .favorites-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        .favorites-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .favorite-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            background: rgba(255, 157, 66, 0.1);
+            border-radius: 10px;
+        }
+
+        body.dark-mode .favorite-item {
+            background: rgba(255, 157, 66, 0.2);
+        }
+
+        .favorite-text {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            word-break: break-all;
+        }
+
+        .remove-favorite {
+            background: none;
+            border: none;
+            color: var(--error);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .feature-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--card-light);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            animation: modalAppear 0.4s ease;
+        }
+
+        @keyframes modalAppear {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        body.dark-mode .modal-content {
+            background-color: var(--card-dark);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--secondary);
+            transition: transform 0.2s;
+        }
+
+        .close-modal:hover {
+            transform: rotate(90deg);
+        }
+
+        .feature-form {
+            margin-top: 25px;
+        }
+
+        .feature-form textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+            font-family: inherit;
+            margin-bottom: 20px;
+            background-color: var(--card-light);
+            color: var(--text-light);
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        body.dark-mode .feature-form textarea {
+            border-color: var(--border-dark);
+            background-color: var(--card-dark);
+            color: var(--text-dark);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0 20px;
+            margin-top: 30px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        body.dark-mode footer {
+            border-top: 1px solid var(--border-dark);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .footer-btn {
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .footer-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .footer-btn:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .youtube-btn {
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: white;
+        }
+
+        .email-btn {
+            background: linear-gradient(135deg, var(--primary), #059a8e);
+            color: white;
+        }
+
+        .terms-link {
+            background: linear-gradient(135deg, #4a00e0, #8e2de2);
+            color: white;
+        }
+
+        .copyright {
+            margin-top: 25px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        body.dark-mode .copyright {
+            color: #aaa;
+        }
+
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            opacity: 0.1;
+            filter: blur(30px);
+        }
+
+        .notification {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            padding: 20px 30px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transform: translateX(200%);
+            transition: transform 0.4s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 500;
+            max-width: 350px;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.error {
+            background-color: var(--error);
+        }
+
+        .notification.success {
+            background-color: var(--success);
+        }
+
+        .notification.warning {
+            background-color: var(--warning);
+        }
+
+        .notification-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Decorative elements */
+        .decoration {
+            position: absolute;
+            z-index: 1;
+            opacity: 0.05;
+        }
+
+        .decoration-1 {
+            top: 10%;
+            left: 5%;
+            font-size: 10rem;
+            transform: rotate(20deg);
+            color: var(--primary);
+        }
+
+        .decoration-2 {
+            bottom: 15%;
+            right: 7%;
+            font-size: 8rem;
+            transform: rotate(-15deg);
+            color: var(--secondary);
+        }
+
+        /* Animation for result items */
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .result-item {
+            animation: popIn 0.3s ease forwards;
+        }
+
+        .result-item:nth-child(1) { animation-delay: 0.1s; }
+        .result-item:nth-child(2) { animation-delay: 0.2s; }
+        .result-item:nth-child(3) { animation-delay: 0.3s; }
+        .result-item:nth-child(4) { animation-delay: 0.4s; }
+        .result-item:nth-child(5) { animation-delay: 0.5s; }
+        /* Add more for additional items */
+        
+        /* Terms & Conditions Styles */
+        .terms-container {
+            display: none;
+            background-color: var(--card-light);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 30px 0;
+            animation: fadeIn 0.5s ease;
+        }
+
+        body.dark-mode .terms-container {
+            background-color: var(--card-dark);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .terms-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .terms-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .terms-title {
+            font-size: 2.2rem;
+            color: var(--secondary);
+            margin: 0;
+        }
+
+        .terms-content {
+            line-height: 1.8;
+        }
+
+        .terms-content h2 {
+            color: var(--secondary);
+            margin: 25px 0 15px;
+            font-size: 1.6rem;
+        }
+
+        .terms-content h3 {
+            color: var(--primary);
+            margin: 20px 0 10px;
+            font-size: 1.3rem;
+        }
+
+        .terms-content p {
+            margin-bottom: 15px;
+        }
+
+        .terms-content ul {
+            margin: 15px 0 15px 30px;
+        }
+
+        .terms-content li {
+            margin-bottom: 10px;
+        }
+
+        .back-to-generator {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 25px;
+            transition: all 0.3s;
+        }
+
+        .back-to-generator:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .terms-content {
+                padding: 0 10px;
+            }
+            
+            .terms-title {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-animation" id="bgAnimation"></div>
+    
+    <!-- Decorative elements -->
+    <div class="decoration decoration-1">
+        <i class="fas fa-envelope-open-text"></i>
+    </div>
+    <div class="decoration decoration-2">
+        <i class="fas fa-at"></i>
+    </div>
+    
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="https://i.postimg.cc/Bb9MNPm2/Photoroom-20250723-213109.png" alt="Life Facts Logo" class="logo-icon">
+                <h1>Life Facts Email Generator</h1>
+            </div>
+            <p class="subtitle">Create unique email variations to unlock amazing truths and discoveries about life</p>
+            
+            <div class="motivational-section">
+                <div class="quote-container" id="quoteContainer">
+                    "The only way to do great work is to love what you do." 
+                    <span class="quote-author">- Steve Jobs</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Terms & Conditions Section -->
+        <div class="terms-container" id="termsContainer">
+            <div class="terms-header">
+                <i class="fas fa-file-contract terms-icon"></i>
+                <h1 class="terms-title">Terms & Conditions – Life Facts Email Variation Generator</h1>
+            </div>
+            
+            <div class="terms-content">
+                <h2>Introduction</h2>
+                <p>Welcome to Life Facts Email Variation Generator. These terms and conditions outline the rules and regulations for the use of Life Facts' website and services.</p>
+                
+                <p>By accessing this website, we assume you accept these terms and conditions. Do not continue to use Life Facts Email Variation Generator if you do not agree to all of the terms and conditions stated on this page.</p>
+                
+                <h2>Terms & Conditions</h2>
+                
+                <h3>Educational Use Only</h3>
+                <p>This tool is provided solely for personal, creative, and educational purposes. It should not be used for any unauthorized or unethical activities.</p>
+                
+                <h3>No Data Stored</h3>
+                <p>We do not collect, save, or share your input data. All generation happens locally within your browser session.</p>
+                
+                <h3>Email Variations are Simulated</h3>
+                <p>The generated email formats are for demo or educational use. They do not bypass real email security or verification systems.</p>
+                
+                <h3>No Liability</h3>
+                <p>Life Facts is not responsible for how users utilize this tool or its generated content. Use responsibly.</p>
+                
+                <h3>Terms May Change</h3>
+                <p>We may update these terms without notice. Users are advised to revisit this page for any future updates.</p>
+                
+                <button class="email-btn" id="contactEmailBtn">
+                    <i class="fas fa-envelope"></i> Contact Us
+                </button>
+                
+                <a href="#" class="back-to-generator" id="backToGenerator">
+                    <i class="fas fa-arrow-left"></i> Back to Generator
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Generator Section -->
+        <div class="main-content" id="mainContent">
+            <div class="generator-card">
+                <div class="card-header">
+                    <i class="fas fa-bolt card-icon"></i>
+                    <h2 class="card-title">Generate Variations</h2>
+                </div>
+                
+                <div class="form-group">
+                    <label for="emailInput"><i class="fas fa-user"></i> Your Email Address</label>
+                    <input type="email" id="emailInput" placeholder="Enter your email (e.g., brightmindsoftware@gmail.com)">
+                </div>
+                
+                <div class="form-group">
+                    <label for="variationCount"><i class="fas fa-sliders"></i> Number of Variations</label>
+                    <select id="variationCount">
+                        <option value="25">25 Variations</option>
+                        <option value="50" selected>50 Variations</option>
+                        <option value="100">100 Variations</option>
+                        <option value="250">250 Variations</option>
+                    </select>
+                </div>
+                
+                <div class="button-group">
+                    <button class="generate-btn" id="generateBtn">
+                        <i class="fas fa-bolt"></i> Generate Variations
+                    </button>
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i> Dark Mode
+                    </button>
+                    <button class="feature-btn" id="featureBtn">
+                        <i class="fas fa-lightbulb"></i> Suggest Feature
+                    </button>
+                </div>
+                
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p class="loading-text">Generating your unique email variations...</p>
+                    <p>Did you know? Octopuses have three hearts!</p>
+                </div>
+                
+                <div class="results-container" id="resultsContainer">
+                    <div class="results-header">
+                        <h2 class="results-title"><i class="fas fa-list"></i> Generated Variations</h2>
+                        <div class="results-actions">
+                            <button class="copy-all-btn" id="copyAllBtn">
+                                <i class="fas fa-copy"></i> Copy All
+                            </button>
+                            <button class="download-btn" id="downloadBtn">
+                                <i class="fas fa-download"></i> Download .txt
+                            </button>
+                        </div>
+                    </div>
+                    <div class="results-grid" id="resultsGrid"></div>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="widget">
+                    <div class="widget-header">
+                        <i class="fas fa-lightbulb widget-icon"></i>
+                        <h2 class="widget-title">Fact of the Day</h2>
+                    </div>
+                    <div class="fact-content">
+                        <p>Did you know? Octopuses have three hearts and blue blood! Two hearts pump blood to the gills, while the third pumps it to the rest of the body. The blue color comes from a copper-based protein called hemocyanin that carries oxygen.</p>
+                    </div>
+                    
+                    <div class="tip-content">
+                        <h3><i class="fas fa-star"></i> Pro Tip</h3>
+                        <p>Use these variations to create unique accounts for different purposes while maintaining the same inbox!</p>
+                    </div>
+                </div>
+                
+                <div class="widget favorites-section">
+                    <div class="favorites-header">
+                        <i class="fas fa-heart widget-icon"></i>
+                        <h2 class="widget-title">Favorite Variations</h2>
+                    </div>
+                    <div class="favorites-list" id="favoritesList">
+                        <p>No favorites yet. Click the heart icon on any variation to save it here!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <div class="footer-links">
+                <a href="#" class="footer-btn terms-link" id="termsLink">
+                    <i class="fas fa-file-contract"></i> Terms & Conditions
+                </a>
+                <a href="https://www.youtube.com/@1000LifeFactsUnlocked" target="_blank" class="footer-btn youtube-btn">
+                    <i class="fab fa-youtube"></i> Life Facts Channel
+                </a>
+                <button class="footer-btn email-btn" id="footerEmailBtn">
+                    <i class="fas fa-envelope"></i> Contact Us
+                </button>
+            </div>
+            <p class="copyright">© 2025 Life Facts. All rights reserved. Unlocking the mysteries of life, one fact at a time.</p>
+        </footer>
+    </div>
+    
+    <!-- Feature Suggestion Modal -->
+    <div class="feature-modal" id="featureModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeFeature">&times;</span>
+            <h2><i class="fas fa-lightbulb"></i> Suggest a New Feature</h2>
+            <p>Help us improve! Tell us what features you'd like to see:</p>
+            <div class="feature-form">
+                <textarea id="featureSuggestion" placeholder="Describe your feature idea..."></textarea>
+                <button class="feature-btn" id="submitFeature">
+                    <i class="fas fa-paper-plane"></i> Submit Suggestion
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle notification-icon"></i>
+        <span id="notificationText">Copied to clipboard!</span>
+    </div>
+
+    <script>
+        // Background animation
+        function createBackgroundAnimation() {
+            const container = document.getElementById('bgAnimation');
+            for (let i = 0; i < 12; i++) {
+                const circle = document.createElement('div');
+                circle.classList.add('circle');
+                
+                const size = Math.random() * 300 + 100;
+                circle.style.width = `${size}px`;
+                circle.style.height = `${size}px`;
+                
+                circle.style.left = `${Math.random() * 100}%`;
+                circle.style.top = `${Math.random() * 100}%`;
+                
+                circle.style.animation = `float ${Math.random() * 25 + 15}s infinite alternate`;
+                
+                container.appendChild(circle);
+            }
+            
+            // Add CSS for animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes float {
+                    0% { transform: translate(0, 0) rotate(0deg); }
+                    100% { transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) rotate(360deg); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Motivational quotes
+        const quotes = [
+            {
+                text: "The only way to do great work is to love what you do.",
+                author: "Steve Jobs"
+            },
+            {
+                text: "Innovation distinguishes between a leader and a follower.",
+                author: "Steve Jobs"
+            },
+            {
+                text: "Your time is limited, don't waste it living someone else's life.",
+                author: "Steve Jobs"
+            },
+            {
+                text: "The future belongs to those who believe in the beauty of their dreams.",
+                author: "Eleanor Roosevelt"
+            },
+            {
+                text: "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+                author: "Winston Churchill"
+            },
+            {
+                text: "The only limit to our realization of tomorrow is our doubts of today.",
+                author: "Franklin D. Roosevelt"
+            },
+            {
+                text: "Do not wait to strike till the iron is hot; but make it hot by striking.",
+                author: "William Butler Yeats"
+            },
+            {
+                text: "The best way to predict the future is to create it.",
+                author: "Peter Drucker"
+            },
+            {
+                text: "Believe you can and you're halfway there.",
+                author: "Theodore Roosevelt"
+            },
+            {
+                text: "It does not matter how slowly you go as long as you do not stop.",
+                author: "Confucius"
+            }
+        ];
+
+        let currentQuoteIndex = 0;
+        const quoteContainer = document.getElementById('quoteContainer');
+
+        function rotateQuote() {
+            const quote = quotes[currentQuoteIndex];
+            quoteContainer.innerHTML = `"${quote.text}" <span class="quote-author">- ${quote.author}</span>`;
+            currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createBackgroundAnimation();
+            setInterval(rotateQuote, 5000);
+            
+            // Theme toggle
+            const themeToggle = document.getElementById('themeToggle');
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                const icon = themeToggle.querySelector('i');
+                if (document.body.classList.contains('dark-mode')) {
+                    icon.className = 'fas fa-sun';
+                    themeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+                } else {
+                    icon.className = 'fas fa-moon';
+                    themeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+                }
+            });
+            
+            // Terms & Conditions navigation
+            const termsLink = document.getElementById('termsLink');
+            const backToGenerator = document.getElementById('backToGenerator');
+            const termsContainer = document.getElementById('termsContainer');
+            const mainContent = document.getElementById('mainContent');
+            
+            termsLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                mainContent.style.display = 'none';
+                termsContainer.style.display = 'block';
+                document.querySelector('footer').style.display = 'none';
+            });
+            
+            backToGenerator.addEventListener('click', function(e) {
+                e.preventDefault();
+                termsContainer.style.display = 'none';
+                mainContent.style.display = 'grid';
+                document.querySelector('footer').style.display = 'block';
+            });
+            
+            // Contact email buttons
+            const contactEmailBtn = document.getElementById('contactEmailBtn');
+            const footerEmailBtn = document.getElementById('footerEmailBtn');
+            
+            const openEmailClient = () => {
+                window.location.href = 'mailto:BRIGHTMINDSSOFTWARE@gmail.com?subject=Life Facts Email Generator Inquiry';
+            };
+            
+            contactEmailBtn.addEventListener('click', openEmailClient);
+            footerEmailBtn.addEventListener('click', openEmailClient);
+            
+            // Feature modal
+            const featureBtn = document.getElementById('featureBtn');
+            const featureModal = document.getElementById('featureModal');
+            const closeFeature = document.getElementById('closeFeature');
+            const submitFeature = document.getElementById('submitFeature');
+            
+            featureBtn.addEventListener('click', function() {
+                featureModal.style.display = 'flex';
+            });
+            
+            closeFeature.addEventListener('click', function() {
+                featureModal.style.display = 'none';
+            });
+            
+            submitFeature.addEventListener('click', function() {
+                const suggestion = document.getElementById('featureSuggestion').value.trim();
+                if (suggestion) {
+                    showNotification('Thank you for your suggestion!', 'success');
+                    document.getElementById('featureSuggestion').value = '';
+                    featureModal.style.display = 'none';
+                } else {
+                    showNotification('Please enter a suggestion', 'error');
+                }
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === featureModal) {
+                    featureModal.style.display = 'none';
+                }
+            });
+            
+            // Generate button
+            const generateBtn = document.getElementById('generateBtn');
+            const emailInput = document.getElementById('emailInput');
+            const variationCount = document.getElementById('variationCount');
+            const loading = document.getElementById('loading');
+            const resultsContainer = document.getElementById('resultsContainer');
+            const resultsGrid = document.getElementById('resultsGrid');
+            
+            generateBtn.addEventListener('click', function() {
+                const email = emailInput.value.trim();
+                if (!email) {
+                    showNotification('Please enter your email address', 'error');
+                    return;
+                }
+                
+                if (!email.includes('@')) {
+                    showNotification('Please enter a valid email address', 'error');
+                    return;
+                }
+                
+                const count = parseInt(variationCount.value);
+                
+                // Show loading
+                loading.style.display = 'block';
+                resultsContainer.style.display = 'none';
+                
+                // Simulate processing time
+                setTimeout(() => {
+                    const variations = generateVariations(email, count);
+                    displayResults(variations);
+                    loading.style.display = 'none';
+                    resultsContainer.style.display = 'block';
+                }, 2000);
+            });
+            
+            // Copy all button
+            const copyAllBtn = document.getElementById('copyAllBtn');
+            copyAllBtn.addEventListener('click', function() {
+                const results = Array.from(document.querySelectorAll('.result-text'))
+                    .map(el => el.textContent)
+                    .join('\n');
+                
+                navigator.clipboard.writeText(results)
+                    .then(() => showNotification('All variations copied to clipboard!', 'success'))
+                    .catch(() => showNotification('Failed to copy', 'error'));
+            });
+            
+            // Download button
+            const downloadBtn = document.getElementById('downloadBtn');
+            downloadBtn.addEventListener('click', function() {
+                const results = Array.from(document.querySelectorAll('.result-text'))
+                    .map(el => el.textContent)
+                    .join('\n');
+                
+                const blob = new Blob([results], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'email-variations.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                showNotification('File downloaded successfully!', 'success');
+            });
+        });
+
+        // Generate email variations with simplified options
+        function generateVariations(email, count) {
+            const [localPart, domain] = email.split('@');
+            const variations = new Set();
+            
+            // Add original
+            variations.add(localPart + '@' + domain);
+            
+            // Add uppercase variations
+            variations.add(localPart.toUpperCase() + '@' + domain);
+            variations.add(localPart.charAt(0).toUpperCase() + localPart.slice(1) + '@' + domain);
+            
+            // Add dot variations
+            const dotVariations = insertDots(localPart.toLowerCase());
+            for (const variation of dotVariations) {
+                if (variations.size >= count) break;
+                variations.add(variation + '@' + domain);
+            }
+            
+            // Fill remaining slots with random variations
+            while (variations.size < count) {
+                const randomVariation = generateRandomVariation(localPart);
+                variations.add(randomVariation + '@' + domain);
+            }
+            
+            // Convert to array and limit to count
+            return Array.from(variations).slice(0, count);
+        }
+
+        // Helper function to insert dots
+        function insertDots(str) {
+            const results = [];
+            const len = str.length;
+            
+            // Generate all possible dot combinations
+            for (let i = 0; i < (1 << (len - 1)); i++) {
+                let result = str[0];
+                for (let j = 0; j < len - 1; j++) {
+                    if (i & (1 << j)) {
+                        result += '.';
+                    }
+                    result += str[j + 1];
+                }
+                results.push(result);
+            }
+            
+            return results;
+        }
+
+        // Generate random variation
+        function generateRandomVariation(str) {
+            const chars = str.split('');
+            const methods = [
+                () => chars.join(''), // original
+                () => chars.map((c, i) => i % 2 === 0 ? c.toUpperCase() : c).join(''), // alternating case
+                () => chars.reverse().join(''), // reversed
+                () => chars.map(c => Math.random() > 0.5 ? c.toUpperCase() : c).join('') // random case
+            ];
+            
+            const method = methods[Math.floor(Math.random() * methods.length)];
+            return method();
+        }
+
+        // Display results
+        function displayResults(variations) {
+            const resultsGrid = document.getElementById('resultsGrid');
+            resultsGrid.innerHTML = '';
+            
+            variations.forEach((variation, index) => {
+                const resultItem = document.createElement('div');
+                resultItem.className = 'result-item';
+                resultItem.innerHTML = `
+                    <div class="result-number">Variation #${index + 1}</div>
+                    <div class="result-text">${variation}</div>
+                    <div class="result-actions">
+                        <button class="copy-btn" data-email="${variation}">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <button class="favorite-btn" data-email="${variation}">
+                            <i class="far fa-heart"></i> Favorite
+                        </button>
+                    </div>
+                `;
+                resultsGrid.appendChild(resultItem);
+            });
+            
+            // Add event listeners to copy buttons
+            document.querySelectorAll('.copy-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const email = this.getAttribute('data-email');
+                    navigator.clipboard.writeText(email)
+                        .then(() => showNotification('Copied to clipboard!', 'success'))
+                        .catch(() => showNotification('Failed to copy', 'error'));
+                });
+            });
+            
+            // Add event listeners to favorite buttons
+            document.querySelectorAll('.favorite-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const email = this.getAttribute('data-email');
+                    const icon = this.querySelector('i');
+                    
+                    if (this.classList.contains('favorited')) {
+                        this.classList.remove('favorited');
+                        icon.className = 'far fa-heart';
+                        removeFromFavorites(email);
+                        showNotification('Removed from favorites', 'warning');
+                    } else {
+                        this.classList.add('favorited');
+                        icon.className = 'fas fa-heart';
+                        addToFavorites(email);
+                        showNotification('Added to favorites!', 'success');
+                    }
+                });
+            });
+        }
+
+        // Favorites management
+        let favorites = [];
+
+        function addToFavorites(email) {
+            if (!favorites.includes(email)) {
+                favorites.push(email);
+                updateFavoritesList();
+            }
+        }
+
+        function removeFromFavorites(email) {
+            favorites = favorites.filter(fav => fav !== email);
+            updateFavoritesList();
+        }
+
+        function updateFavoritesList() {
+            const favoritesList = document.getElementById('favoritesList');
+            
+            if (favorites.length === 0) {
+                favoritesList.innerHTML = '<p>No favorites yet. Click the heart icon on any variation to save it here!</p>';
+                return;
+            }
+            
+            favoritesList.innerHTML = '';
+            favorites.forEach(email => {
+                const favoriteItem = document.createElement('div');
+                favoriteItem.className = 'favorite-item';
+                favoriteItem.innerHTML = `
+                    <div class="favorite-text">${email}</div>
+                    <button class="remove-favorite" data-email="${email}">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+                favoritesList.appendChild(favoriteItem);
+            });
+            
+            // Add event listeners to remove buttons
+            document.querySelectorAll('.remove-favorite').forEach(button => {
+                button.addEventListener('click', function() {
+                    const email = this.getAttribute('data-email');
+                    removeFromFavorites(email);
+                    showNotification('Removed from favorites', 'warning');
+                });
+            });
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            const icon = notification.querySelector('.notification-icon');
+            
+            notificationText.textContent = message;
+            
+            // Set icon based on type
+            switch(type) {
+                case 'success':
+                    icon.className = 'fas fa-check-circle notification-icon';
+                    break;
+                case 'error':
+                    icon.className = 'fas fa-exclamation-circle notification-icon';
+                    break;
+                case 'warning':
+                    icon.className = 'fas fa-exclamation-triangle notification-icon';
+                    break;
+                default:
+                    icon.className = 'fas fa-info-circle notification-icon';
+            }
+            
+            notification.className = 'notification show ' + type;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
